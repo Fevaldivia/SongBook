@@ -12,6 +12,8 @@
 		5108B47F1FE332540041047F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5108B47D1FE332540041047F /* Main.storyboard */; };
 		5108B4811FE332540041047F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5108B4801FE332540041047F /* Assets.xcassets */; };
 		5108B4841FE332540041047F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5108B4821FE332540041047F /* LaunchScreen.storyboard */; };
+		51CBD71720B24520006D8D4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CBD71620B24520006D8D4D /* Constants.swift */; };
+		51CBD71920B25224006D8D4D /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CBD71820B25224006D8D4D /* GCD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		5108B4801FE332540041047F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5108B4831FE332540041047F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5108B4851FE332540041047F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51CBD71620B24520006D8D4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		51CBD71820B25224006D8D4D /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				5108B4791FE332540041047F /* AppDelegate.swift */,
+				51CBD71820B25224006D8D4D /* GCD.swift */,
 				51CBD71220ABC834006D8D4D /* Controllers */,
 				51CBD71320ABC849006D8D4D /* Model */,
 				51CBD71420ABC854006D8D4D /* View */,
@@ -77,6 +82,7 @@
 		51CBD71320ABC849006D8D4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				51CBD71520B244E1006D8D4D /* GuitarPartyAPI */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,6 +92,14 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		51CBD71520B244E1006D8D4D /* GuitarPartyAPI */ = {
+			isa = PBXGroup;
+			children = (
+				51CBD71620B24520006D8D4D /* Constants.swift */,
+			);
+			path = GuitarPartyAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +176,8 @@
 			files = (
 				5108B47C1FE332540041047F /* SongsViewController.swift in Sources */,
 				5108B47A1FE332540041047F /* AppDelegate.swift in Sources */,
+				51CBD71920B25224006D8D4D /* GCD.swift in Sources */,
+				51CBD71720B24520006D8D4D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
