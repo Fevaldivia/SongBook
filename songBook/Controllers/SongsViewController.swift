@@ -10,14 +10,15 @@ import UIKit
 
 
 class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    //MARK: Labels
     @IBOutlet weak var searchText: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,7 +28,6 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     var songs = [AnyObject]()
-    var filteredSongs = [AnyObject]()
     
     func getSongs() {
         let urlString = "http://api.guitarparty.com/v2/songs/?query=All"
@@ -62,6 +62,9 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 print("We Couldn't get any song")
                 return
             }
+            
+            // remove my last search from the array
+            self.songs.removeAll()
             
             for everySong in songsDictonary {
                 self.songs.append(everySong as AnyObject)
@@ -114,11 +117,13 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     print("We Couldn't get any song")
                     return
                 }
+                
+                
                 // remove my last search from the array
-                self.filteredSongs.removeAll()
+                self.songs.removeAll()
                 
                 for filter in songsDictonary {
-                    self.filteredSongs.append(filter as AnyObject)
+                    self.songs.append(filter as AnyObject)
                 }
                 
                 self.performUIUpdatesOnMain {
@@ -132,17 +137,12 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filteredSongs.isEmpty {
            return self.songs.count
-        }else{
-            return self.filteredSongs.count
-        }
         
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if filteredSongs.isEmpty {
             let cellID = "songsCell"
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID)!
@@ -154,20 +154,15 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             return cell
-        }else{
-            let cellID = "songsCell"
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID)!
-            let song = self.filteredSongs[(indexPath as NSIndexPath).row]
-            
-            if let songTitle = song["title"] as? String {
-                self.performUIUpdatesOnMain {
-                    cell.textLabel?.text = songTitle
-                }
-            }
-            return cell
-        }
         
+    }
+    // when I select a row send me to the detail song
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailSong = self.storyboard!.instantiateViewController(withIdentifier: "detailSong") as! SongDetailViewController
+        
+        detailSong.song = self.songs[(indexPath as NSIndexPath).row] as! [String:AnyObject]
+        
+        self.navigationController!.pushViewController(detailSong, animated: true)
     }
 
 }
