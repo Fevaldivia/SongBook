@@ -84,6 +84,49 @@
             </objects>
             <point key="canvasLocation" x="944.79999999999995" y="384.55772113943033"/>
         </scene>
+        <!--Song Detail View Controller-->
+        <scene sceneID="d8S-du-pMS">
+            <objects>
+                <viewController storyboardIdentifier="detailSong" id="WX7-Ff-3q9" customClass="SongDetailViewController" customModule="songBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPs-s2-tgs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQL-ZD-Z1L">
+                                <rect key="frame" x="106" y="45" width="162" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="spatial" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-qr-TZW">
+                                <rect key="frame" x="16" y="101.5" width="343" height="469.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="centerX" secondItem="MPs-s2-tgs" secondAttribute="centerX" id="5If-yf-AiM"/>
+                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="106" id="8jy-t2-wrq"/>
+                            <constraint firstItem="Fam-qr-TZW" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="16" id="J4M-QV-WPX"/>
+                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="top" secondItem="VdS-UQ-bhT" secondAttribute="top" constant="25" id="Y6g-XT-W8v"/>
+                            <constraint firstItem="VdS-UQ-bhT" firstAttribute="bottom" secondItem="Fam-qr-TZW" secondAttribute="bottom" constant="96" id="a5I-Bw-A8F"/>
+                            <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="EQL-ZD-Z1L" secondAttribute="bottom" constant="30" id="e14-ie-BWG"/>
+                            <constraint firstItem="VdS-UQ-bhT" firstAttribute="trailing" secondItem="Fam-qr-TZW" secondAttribute="trailing" constant="16" id="hcq-Jh-qNx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VdS-UQ-bhT"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodySongLabel" destination="Fam-qr-TZW" id="EqP-Mb-zjs"/>
+                        <outlet property="titleSongLabel" destination="EQL-ZD-Z1L" id="2NY-K6-1Iq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PsZ-IJ-qVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="384.55772113943033"/>
+        </scene>
         <!--Favorites-->
         <scene sceneID="3fL-cd-2dA">
             <objects>
