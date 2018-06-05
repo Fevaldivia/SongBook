@@ -8,9 +8,10 @@
 import UIKit
 
 class SongDetailViewController: UIViewController {
+    //MARK: IBOutlets
     @IBOutlet weak var titleSongLabel: UILabel!
-    
     @IBOutlet weak var bodySongLabel: UITextView!
+    
     var song = [String:AnyObject]()
     
     override func viewDidLoad() {

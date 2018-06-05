@@ -10,7 +10,7 @@ import UIKit
 
 
 class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    //MARK: Labels
+    //MARK: IBOutlets
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
