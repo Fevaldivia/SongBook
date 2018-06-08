@@ -12,6 +12,7 @@ class SongDetailViewController: UIViewController {
     @IBOutlet weak var titleSongLabel: UILabel!
     @IBOutlet weak var bodySongLabel: UITextView!
     
+    
     var song = [String:AnyObject]()
     
     override func viewDidLoad() {
@@ -21,4 +22,9 @@ class SongDetailViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func saveToFavorites(_ sender: Any) {
+        
+    }
+    
 }
