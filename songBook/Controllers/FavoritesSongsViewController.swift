@@ -19,20 +19,18 @@ class FavoritesSongsViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Fetching data from store
-        let fetchRequest:NSFetchRequest<Song> = Song.fetchRequest()
-        if let result = try? dataController.viewContext.fetch(fetchRequest){
-            favSongs = result
-            tableView.reloadData()
-        }
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        //Fetching data from store
+        let fetchRequest:NSFetchRequest<Song> = Song.fetchRequest()
+        if let result = try? dataController.viewContext.fetch(fetchRequest){
+            favSongs = result
+            tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,5 +46,16 @@ class FavoritesSongsViewController: UIViewController, UITableViewDelegate, UITab
         cell.textLabel?.text = song.title
 
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If this is a NoteDetailsViewController, we'll configure its `Note`
+        // and its delete action
+        if let vc = segue.destination as? SongDetailViewController {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                vc.favoritesSongs = [favSongs[(indexPath as NSIndexPath).row]]
+                vc.dataController = dataController
+            }
+        }
     }
 }
