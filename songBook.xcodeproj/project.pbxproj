@@ -15,6 +15,7 @@
 		5139222F20C614F200C8AB47 /* GuitarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139222E20C614F200C8AB47 /* GuitarFunctions.swift */; };
 		514C342E20CA137900430C2E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C342D20CA137900430C2E /* DataController.swift */; };
 		514C343120CA13F000430C2E /* SongBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 514C342F20CA13F000430C2E /* SongBook.xcdatamodeld */; };
+		514C343320CB660A00430C2E /* FavoritesSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C343220CB660A00430C2E /* FavoritesSongsViewController.swift */; };
 		51CBD71720B24520006D8D4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CBD71620B24520006D8D4D /* Constants.swift */; };
 		51CBD71920B25224006D8D4D /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CBD71820B25224006D8D4D /* GCD.swift */; };
 		51DD20B520C336AE00D819F0 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD20B420C336AE00D819F0 /* SongDetailViewController.swift */; };
@@ -31,6 +32,7 @@
 		5139222E20C614F200C8AB47 /* GuitarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarFunctions.swift; sourceTree = "<group>"; };
 		514C342D20CA137900430C2E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		514C343020CA13F000430C2E /* SongBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SongBook.xcdatamodel; sourceTree = "<group>"; };
+		514C343220CB660A00430C2E /* FavoritesSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSongsViewController.swift; sourceTree = "<group>"; };
 		51CBD71620B24520006D8D4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		51CBD71820B25224006D8D4D /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		51DD20B420C336AE00D819F0 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				5108B47B1FE332540041047F /* SongsViewController.swift */,
 				51DD20B420C336AE00D819F0 /* SongDetailViewController.swift */,
+				514C343220CB660A00430C2E /* FavoritesSongsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				51CBD71920B25224006D8D4D /* GCD.swift in Sources */,
 				51CBD71720B24520006D8D4D /* Constants.swift in Sources */,
 				514C343120CA13F000430C2E /* SongBook.xcdatamodeld in Sources */,
+				514C343320CB660A00430C2E /* FavoritesSongsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
