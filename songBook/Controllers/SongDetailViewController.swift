@@ -19,6 +19,7 @@ class SongDetailViewController: UIViewController {
     var dataController:DataController!
     
     override func viewDidLoad() {
+        notFavorited(button: saveIcon)
         performUIUpdatesOnMain {
             self.titleSongLabel.text = self.song["title"] as? String
             self.bodySongLabel.text = self.song["body"] as? String
