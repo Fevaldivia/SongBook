@@ -52,7 +52,7 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="OBO-1x-CGx"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search a song" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oiu-N2-deI">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oiu-N2-deI">
                                 <rect key="frame" x="16" y="80" width="251" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -73,7 +73,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Songs" id="dAi-8K-jWD"/>
+                    <tabBarItem key="tabBarItem" title="Songs" image="Search" id="dAi-8K-jWD"/>
                     <navigationItem key="navigationItem" id="b5V-Nn-Fop"/>
                     <connections>
                         <outlet property="searchText" destination="Oiu-N2-deI" id="2Ce-9r-vxG"/>
@@ -99,22 +99,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="spatial" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-qr-TZW">
-                                <rect key="frame" x="16" y="101.5" width="343" height="469.5"/>
+                                <rect key="frame" x="16" y="102" width="343" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cf0-IO-3hb">
+                                <rect key="frame" x="14" y="44" width="50" height="30"/>
+                                <state key="normal" title="Chords"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-tO-aDt">
+                                <rect key="frame" x="333" y="47" width="26" height="24"/>
+                                <state key="normal" image="beforeSave"/>
+                                <connections>
+                                    <action selector="saveToFavorites:" destination="WX7-Ff-3q9" eventType="touchUpInside" id="K4d-Nz-7ub"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Rb7-tO-aDt" firstAttribute="top" secondItem="VdS-UQ-bhT" secondAttribute="top" constant="27" id="3sa-Nv-q0S"/>
                             <constraint firstItem="EQL-ZD-Z1L" firstAttribute="centerX" secondItem="MPs-s2-tgs" secondAttribute="centerX" id="5If-yf-AiM"/>
+                            <constraint firstItem="Rb7-tO-aDt" firstAttribute="leading" secondItem="EQL-ZD-Z1L" secondAttribute="trailing" constant="65" id="6EB-3X-r62"/>
                             <constraint firstItem="EQL-ZD-Z1L" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="106" id="8jy-t2-wrq"/>
+                            <constraint firstItem="Cf0-IO-3hb" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="14" id="Buk-mJ-AI0"/>
                             <constraint firstItem="Fam-qr-TZW" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="16" id="J4M-QV-WPX"/>
+                            <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="Rb7-tO-aDt" secondAttribute="bottom" constant="31" id="Jno-c8-gx8"/>
+                            <constraint firstItem="VdS-UQ-bhT" firstAttribute="trailing" secondItem="Rb7-tO-aDt" secondAttribute="trailing" constant="16" id="NoE-Hv-QlT"/>
                             <constraint firstItem="EQL-ZD-Z1L" firstAttribute="top" secondItem="VdS-UQ-bhT" secondAttribute="top" constant="25" id="Y6g-XT-W8v"/>
-                            <constraint firstItem="VdS-UQ-bhT" firstAttribute="bottom" secondItem="Fam-qr-TZW" secondAttribute="bottom" constant="96" id="a5I-Bw-A8F"/>
+                            <constraint firstItem="VdS-UQ-bhT" firstAttribute="bottom" secondItem="Fam-qr-TZW" secondAttribute="bottom" constant="19" id="a5I-Bw-A8F"/>
                             <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="EQL-ZD-Z1L" secondAttribute="bottom" constant="30" id="e14-ie-BWG"/>
+                            <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="Cf0-IO-3hb" secondAttribute="bottom" constant="28" id="gny-Fl-py4"/>
                             <constraint firstItem="VdS-UQ-bhT" firstAttribute="trailing" secondItem="Fam-qr-TZW" secondAttribute="trailing" constant="16" id="hcq-Jh-qNx"/>
+                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="leading" secondItem="Cf0-IO-3hb" secondAttribute="trailing" constant="42" id="lP5-sq-SpW"/>
+                            <constraint firstItem="Cf0-IO-3hb" firstAttribute="top" secondItem="VdS-UQ-bhT" secondAttribute="top" constant="24" id="tSj-Dg-I7d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VdS-UQ-bhT"/>
                     </view>
@@ -137,7 +156,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BpN-z0-FHk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="Avv-li-wzk"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="favorites" id="Avv-li-wzk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8A-7u-OQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,4 +182,9 @@
             <point key="canvasLocation" x="-9" y="831"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Search" width="20" height="21"/>
+        <image name="beforeSave" width="26" height="24"/>
+        <image name="favorites" width="24" height="22"/>
+    </resources>
 </document>
