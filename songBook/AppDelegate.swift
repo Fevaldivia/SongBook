@@ -19,6 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         dataController.load()
+        
+        // Fetch for Favorites songs tableview
+        let navigationController = window?.rootViewController as! UINavigationController
+        let tabController = navigationController.topViewController as! UITabBarController
+        let favSongsList = tabController.viewControllers![1] as! FavoritesSongsViewController
+        favSongsList.dataController = dataController
+        
+        //
+        let navController = window?.rootViewController as! UINavigationController
+        let tController = navController.topViewController as! UITabBarController
+        let songsController = tController.viewControllers![0] as! SongsViewController
+        songsController.dataController = dataController
+        
         return true
     }
 

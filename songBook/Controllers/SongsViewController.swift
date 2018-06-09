@@ -7,12 +7,15 @@
 //
 import Foundation
 import UIKit
+import CoreData
 
 
 class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: IBOutlets
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    
+    var dataController: DataController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +97,7 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let detailSong = self.storyboard!.instantiateViewController(withIdentifier: "detailSong") as! SongDetailViewController
         
         detailSong.song = GuitarFunctions.sharedInstanse.songs[(indexPath as NSIndexPath).row] as! [String:AnyObject]
+        detailSong.dataController = dataController
         
         self.navigationController!.pushViewController(detailSong, animated: true)
     }
