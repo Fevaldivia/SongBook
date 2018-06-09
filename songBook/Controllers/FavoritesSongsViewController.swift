@@ -48,14 +48,13 @@ class FavoritesSongsViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // If this is a NoteDetailsViewController, we'll configure its `Note`
-        // and its delete action
-        if let vc = segue.destination as? SongDetailViewController {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                vc.favoritesSongs = [favSongs[(indexPath as NSIndexPath).row]]
-                vc.dataController = dataController
-            }
-        }
+    // when I select a row send me to the detail song
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailSong = self.storyboard!.instantiateViewController(withIdentifier: "detailSong") as! SongDetailViewController
+        
+        detailSong.song = favSongs[(indexPath as NSIndexPath).row] as! [String:AnyObject]
+        detailSong.dataController = dataController
+        
+        self.navigationController!.pushViewController(detailSong, animated: true)
     }
 }

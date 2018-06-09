@@ -15,7 +15,6 @@ class SongDetailViewController: UIViewController {
     @IBOutlet weak var saveIcon: UIButton!
     
     var song = [String:AnyObject]()
-    var favoritesSongs = [Song]()
     
     var dataController:DataController!
     
