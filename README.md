@@ -12,6 +12,8 @@ kind of request in my app.
 Download the app from this github profile and save it into your computer make sure that you have the last version of Xcode and Swift open
 Xcode and choose open project go to the songBook project and open it.
 
+For this project I am using [Guitar Party API](http://www.guitarparty.com/developers/api-docs/getting-started/introduction/#overview) if you wanna read more about it you can go to the link and find methods and more information of how to use this API, right now the project is running with my APIKey with feel free to signup and replace it for your own.
+
 
 ## Features
 
