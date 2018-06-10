@@ -86,6 +86,7 @@ class SongDetailViewController: UIViewController {
                 self.notFavorited(button: self.saveIcon)
             }
             self.errorAlert(title: "Success!", message: "Your song has been removed from favorites!")
+            self.dismiss(animated: true, completion: nil)
         }else{
             self.errorAlert(title: "Error!", message: "We couldn't remove this song, try later")
         }

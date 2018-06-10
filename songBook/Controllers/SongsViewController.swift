@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     //MARK: IBOutlets
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +24,7 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.searchText.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +43,12 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     var songs = [AnyObject]()
+    
+    // Dismissing Keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchText.resignFirstResponder()
+        return true
+    }
     
     // fill table view with artist by letter A
     func getSongs() {
