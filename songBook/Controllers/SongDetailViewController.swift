@@ -13,25 +13,45 @@ class SongDetailViewController: UIViewController {
     @IBOutlet weak var titleSongLabel: UILabel!
     @IBOutlet weak var bodySongLabel: UITextView!
     @IBOutlet weak var saveIcon: UIButton!
+    @IBOutlet weak var removeIcon: UIButton!
     
     var song = [String:AnyObject]()
+    
+    var favoriteSongs: Song!
     
     var dataController:DataController!
     
     override func viewDidLoad() {
-        notFavorited(button: saveIcon)
         performUIUpdatesOnMain {
-            self.titleSongLabel.text = self.song["title"] as? String
-            self.bodySongLabel.text = self.song["body"] as? String
+            if (self.favoriteSongs != nil) {
+                self.titleSongLabel.text = self.favoriteSongs.title
+                self.bodySongLabel.text = self.favoriteSongs.body
+                self.favorited(button: self.saveIcon)
+                self.deleteButton(button: self.removeIcon)
+            }else{
+                self.titleSongLabel.text = self.song["title"] as? String
+                self.bodySongLabel.text = self.song["body"] as? String
+                self.notFavorited(button: self.saveIcon)
+            }
         }
         
+    }
+    
+    func deleteButton(button: UIButton){
+        button.isSelected = false
+        button.setImage(#imageLiteral(resourceName: "Trashdelete"), for: .normal)
+    }
+    
+    func deleteButtonSelected(button: UIButton) {
+        button.isSelected = true
+        button.isEnabled = false
     }
     
     
     func favorited(button: UIButton) {
         button.isSelected = true
         button.setImage(#imageLiteral(resourceName: "savedSong"), for: .selected)
-        
+        button.isUserInteractionEnabled = false
     }
     
     func notFavorited(button: UIButton) {
@@ -50,10 +70,27 @@ class SongDetailViewController: UIViewController {
             print("Congrats you have a new song in your book!")
             performUIUpdatesOnMain {
                 self.favorited(button: self.saveIcon)
+                self.deleteButton(button: self.removeIcon)
             }
         }else{
             print("We Couldn't save this song in your fav.")
         }
     }
+    
+    @IBAction func removeFromFavorites(_ sender: Any) {
+        let songToDelete = favoriteSongs
+        dataController.viewContext.delete(songToDelete!)
+        if ((try? dataController.viewContext.save()) != nil) {
+            print("Your song has been removed from favorites!")
+            performUIUpdatesOnMain {
+                self.deleteButtonSelected(button: self.removeIcon)
+                self.notFavorited(button: self.saveIcon)
+            }
+        }else{
+            print("We couldn't remove this song, try later")
+        }
+        
+    }
+    
     
 }

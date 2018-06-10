@@ -107,9 +107,14 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-tO-aDt">
                                 <rect key="frame" x="329" y="47" width="30" height="34"/>
-                                <state key="normal" title="fav"/>
                                 <connections>
                                     <action selector="saveToFavorites:" destination="WX7-Ff-3q9" eventType="touchUpInside" id="K4d-Nz-7ub"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKB-8l-rfq">
+                                <rect key="frame" x="30" y="52" width="19" height="35"/>
+                                <connections>
+                                    <action selector="removeFromFavorites:" destination="WX7-Ff-3q9" eventType="touchUpInside" id="v9m-vD-U22"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -123,14 +128,19 @@
                             <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="Rb7-tO-aDt" secondAttribute="bottom" constant="31" id="Jno-c8-gx8"/>
                             <constraint firstItem="VdS-UQ-bhT" firstAttribute="trailing" secondItem="Rb7-tO-aDt" secondAttribute="trailing" constant="16" id="NoE-Hv-QlT"/>
                             <constraint firstItem="EQL-ZD-Z1L" firstAttribute="top" secondItem="VdS-UQ-bhT" secondAttribute="top" constant="25" id="Y6g-XT-W8v"/>
+                            <constraint firstItem="BKB-8l-rfq" firstAttribute="top" secondItem="VdS-UQ-bhT" secondAttribute="top" constant="32" id="YRy-VZ-4fK"/>
                             <constraint firstItem="VdS-UQ-bhT" firstAttribute="bottom" secondItem="Fam-qr-TZW" secondAttribute="bottom" constant="19" id="a5I-Bw-A8F"/>
                             <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="EQL-ZD-Z1L" secondAttribute="bottom" constant="30" id="e14-ie-BWG"/>
                             <constraint firstItem="VdS-UQ-bhT" firstAttribute="trailing" secondItem="Fam-qr-TZW" secondAttribute="trailing" constant="16" id="hcq-Jh-qNx"/>
+                            <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="BKB-8l-rfq" secondAttribute="bottom" constant="25" id="jVd-yc-pZd"/>
+                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="leading" secondItem="BKB-8l-rfq" secondAttribute="trailing" constant="112" id="m3u-lH-iUe"/>
+                            <constraint firstItem="BKB-8l-rfq" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="30" id="vcB-0P-naK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VdS-UQ-bhT"/>
                     </view>
                     <connections>
                         <outlet property="bodySongLabel" destination="Fam-qr-TZW" id="EqP-Mb-zjs"/>
+                        <outlet property="removeIcon" destination="BKB-8l-rfq" id="mHH-hI-l4i"/>
                         <outlet property="saveIcon" destination="Rb7-tO-aDt" id="dJH-Vr-KT9"/>
                         <outlet property="titleSongLabel" destination="EQL-ZD-Z1L" id="2NY-K6-1Iq"/>
                     </connections>

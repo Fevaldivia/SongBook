@@ -52,7 +52,7 @@ class FavoritesSongsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailSong = self.storyboard!.instantiateViewController(withIdentifier: "detailSong") as! SongDetailViewController
         
-        detailSong.song = favSongs[(indexPath as NSIndexPath).row] as! [String:AnyObject]
+        detailSong.favoriteSongs = favSongs[indexPath.row]
         detailSong.dataController = dataController
         
         self.navigationController!.pushViewController(detailSong, animated: true)
