@@ -1,9 +1,5 @@
 # Song Book 
 
-[![Build Status][travis-image]][travis-url]
-[![License][license-image]][license-url]
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
-
 This app is a classic version of old songBooks that I used to buy to learn new guitar songs now in your phone and available to search 
 any song that you would like to learn.
 
