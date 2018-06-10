@@ -105,14 +105,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-tO-aDt">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-tO-aDt">
                                 <rect key="frame" x="329" y="47" width="30" height="34"/>
                                 <connections>
                                     <action selector="saveToFavorites:" destination="WX7-Ff-3q9" eventType="touchUpInside" id="K4d-Nz-7ub"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKB-8l-rfq">
-                                <rect key="frame" x="30" y="52" width="19" height="35"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKB-8l-rfq">
+                                <rect key="frame" x="30" y="52" width="30" height="35"/>
                                 <connections>
                                     <action selector="removeFromFavorites:" destination="WX7-Ff-3q9" eventType="touchUpInside" id="v9m-vD-U22"/>
                                 </connections>
@@ -133,7 +133,7 @@
                             <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="EQL-ZD-Z1L" secondAttribute="bottom" constant="30" id="e14-ie-BWG"/>
                             <constraint firstItem="VdS-UQ-bhT" firstAttribute="trailing" secondItem="Fam-qr-TZW" secondAttribute="trailing" constant="16" id="hcq-Jh-qNx"/>
                             <constraint firstItem="Fam-qr-TZW" firstAttribute="top" secondItem="BKB-8l-rfq" secondAttribute="bottom" constant="25" id="jVd-yc-pZd"/>
-                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="leading" secondItem="BKB-8l-rfq" secondAttribute="trailing" constant="112" id="m3u-lH-iUe"/>
+                            <constraint firstItem="EQL-ZD-Z1L" firstAttribute="leading" secondItem="BKB-8l-rfq" secondAttribute="trailing" constant="101" id="m3u-lH-iUe"/>
                             <constraint firstItem="BKB-8l-rfq" firstAttribute="leading" secondItem="VdS-UQ-bhT" secondAttribute="leading" constant="30" id="vcB-0P-naK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VdS-UQ-bhT"/>
