@@ -15,6 +15,8 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     var dataController: DataController!
     
     override func viewDidLoad() {
@@ -26,8 +28,17 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        performUIUpdatesOnMain {
+            self.activityIndicator.center = self.view.center
+            self.activityIndicator.hidesWhenStopped = true
+            self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            self.view.addSubview(self.activityIndicator)
+            
+            self.activityIndicator.startAnimating()
+        }
         self.getSongs()
         self.tableView.reloadData()
+        self.activityIndicator.stopAnimating()
     }
     
     var songs = [AnyObject]()
@@ -44,6 +55,7 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             self.performUIUpdatesOnMain {
                 self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -53,7 +65,7 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func searchSongButton(_ sender: Any) {
         if (searchText.text?.isEmpty)! {
-            print("There is no song to search.")
+            self.errorAlert(title: "Error!", message: "TextBox! is EMPTY!")
         }else{
             GuitarFunctions.sharedInstanse.searchText(searchByArtist: searchText.text!) { (result, error) in
                 guard (result != nil || error == nil) else {
@@ -64,7 +76,14 @@ class SongsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 GuitarFunctions.sharedInstanse.songs = result!
                 
                 self.performUIUpdatesOnMain {
+                    self.activityIndicator.center = self.view.center
+                    self.activityIndicator.hidesWhenStopped = true
+                    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                    self.view.addSubview(self.activityIndicator)
+                    self.activityIndicator.startAnimating()
+                    
                     self.tableView.reloadData()
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }

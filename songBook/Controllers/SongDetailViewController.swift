@@ -67,13 +67,13 @@ class SongDetailViewController: UIViewController {
         saveSong.isSaved = true
         
         if ((try? dataController.viewContext.save()) != nil) {
-            print("Congrats you have a new song in your book!")
             performUIUpdatesOnMain {
                 self.favorited(button: self.saveIcon)
                 self.deleteButton(button: self.removeIcon)
             }
+            self.errorAlert(title: "Success!", message: "Congrats you have a new song in your book!")
         }else{
-            print("We Couldn't save this song in your fav.")
+            self.errorAlert(title: "Error!", message: "We Couldn't save this song in your fav.")
         }
     }
     
@@ -81,13 +81,13 @@ class SongDetailViewController: UIViewController {
         let songToDelete = favoriteSongs
         dataController.viewContext.delete(songToDelete!)
         if ((try? dataController.viewContext.save()) != nil) {
-            print("Your song has been removed from favorites!")
             performUIUpdatesOnMain {
                 self.deleteButtonSelected(button: self.removeIcon)
                 self.notFavorited(button: self.saveIcon)
             }
+            self.errorAlert(title: "Success!", message: "Your song has been removed from favorites!")
         }else{
-            print("We couldn't remove this song, try later")
+            self.errorAlert(title: "Error!", message: "We couldn't remove this song, try later")
         }
         
     }
