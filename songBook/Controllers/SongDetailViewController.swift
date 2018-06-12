@@ -17,41 +17,42 @@ class SongDetailViewController: UIViewController {
     
     var song = [String:AnyObject]()
     
-    var favoriteSongs: Song!
+    var favoriteSongs = [Song]()
     
     var dataController:DataController!
     
     override func viewDidLoad() {
         performUIUpdatesOnMain {
-            if (self.favoriteSongs != nil) {
-                self.titleSongLabel.text = self.favoriteSongs.title
-                self.bodySongLabel.text = self.favoriteSongs.body
-                self.favorited(button: self.saveIcon)
-                self.deleteButton(button: self.removeIcon)
-            }else{
-                self.titleSongLabel.text = self.song["title"] as? String
-                self.bodySongLabel.text = self.song["body"] as? String
-                self.notFavorited(button: self.saveIcon)
+            self.titleSongLabel.text = self.song["title"] as? String
+            self.bodySongLabel.text = self.song["body"] as? String
+        }
+        
+        let title = self.song["title"] as? String
+        let body = self.song["body"] as? String
+        var isFav = false
+        for songs in favoriteSongs {
+            if songs.title == title && songs.body == body{
+                isFav = true
             }
+        }
+        
+        // Checking for this song is it in favourite or not. This will prevent duplication in core data.
+        if isFav {
+            saveIcon.isSelected = true
+            saveIcon.setImage(#imageLiteral(resourceName: "savedSong"), for: .selected)
+        }else{
+            saveIcon.isSelected = false
+            saveIcon.setImage(#imageLiteral(resourceName: "beforeSave"), for: .normal)
         }
         
     }
     
-    func deleteButton(button: UIButton){
-        button.isSelected = false
-        button.setImage(#imageLiteral(resourceName: "Trashdelete"), for: .normal)
-    }
     
-    func deleteButtonSelected(button: UIButton) {
-        button.isSelected = true
-        button.isEnabled = false
-    }
     
     
     func favorited(button: UIButton) {
         button.isSelected = true
         button.setImage(#imageLiteral(resourceName: "savedSong"), for: .selected)
-        button.isUserInteractionEnabled = false
     }
     
     func notFavorited(button: UIButton) {
@@ -61,6 +62,13 @@ class SongDetailViewController: UIViewController {
     
     @IBAction func saveToFavorites(_ sender: Any) {
         
+        // checking for if song is already favourite or not by checking saveIcon is selected means it is in favourite so it have to remove from here.
+        if saveIcon.isSelected {
+            self.removeFromFav()
+            return
+        }
+        
+        // If  saveIcon button is not selected so it is not in favourite so you can save it to favourite.
         let saveSong = Song(context: dataController.viewContext)
         saveSong.title = self.song["title"] as? String
         saveSong.body = self.song["body"] as? String
@@ -69,28 +77,35 @@ class SongDetailViewController: UIViewController {
         if ((try? dataController.viewContext.save()) != nil) {
             performUIUpdatesOnMain {
                 self.favorited(button: self.saveIcon)
-                self.deleteButton(button: self.removeIcon)
             }
+            self.favoriteSongs.append(saveSong)
             self.errorAlert(title: "Success!", message: "Congrats you have a new song in your book!")
         }else{
             self.errorAlert(title: "Error!", message: "We Couldn't save this song in your fav.")
         }
     }
     
-    @IBAction func removeFromFavorites(_ sender: Any) {
-        let songToDelete = favoriteSongs
-        dataController.viewContext.delete(songToDelete!)
+    
+    
+    func removeFromFav(){
+        // Here i am searching for the match of current song and if current song found in favourite then it will be delete it will resolve the crash issue because in old code the favoritesong object was null.
+        let title = self.song["title"] as? String
+        let body = self.song["body"] as? String
+        
+        for songs in favoriteSongs {
+            if songs.title == title && songs.body == body{
+                favoriteSongs.remove(at: favoriteSongs.index(of: songs)!)
+                dataController.viewContext.delete(songs)
+            }
+        }
         if ((try? dataController.viewContext.save()) != nil) {
+            self.errorAlert(title: "Success!", message: "Your song has been removed from favorites!")
             performUIUpdatesOnMain {
-                self.deleteButtonSelected(button: self.removeIcon)
                 self.notFavorited(button: self.saveIcon)
             }
-            self.errorAlert(title: "Success!", message: "Your song has been removed from favorites!")
-            self.dismiss(animated: true, completion: nil)
         }else{
             self.errorAlert(title: "Error!", message: "We couldn't remove this song, try later")
         }
-        
     }
     
     

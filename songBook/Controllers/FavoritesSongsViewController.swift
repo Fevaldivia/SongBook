@@ -51,10 +51,14 @@ class FavoritesSongsViewController: UIViewController, UITableViewDelegate, UITab
     // when I select a row send me to the detail song
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailSong = self.storyboard!.instantiateViewController(withIdentifier: "detailSong") as! SongDetailViewController
+        let favSong = favSongs[indexPath.row]
         
-        detailSong.favoriteSongs = favSongs[indexPath.row]
         detailSong.dataController = dataController
+        detailSong.favoriteSongs = favSongs
         
+        // Inistalzing song object of detailView so we dont have to put diffrent diffrent logic for both.
+        detailSong.song = ["title" :favSong.title, "body" : favSong.body ] as [String : AnyObject]
         self.navigationController!.pushViewController(detailSong, animated: true)
+        
     }
 }
